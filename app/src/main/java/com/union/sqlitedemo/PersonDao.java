@@ -1,6 +1,8 @@
 package com.union.sqlitedemo;
 
-import androidx.room.*;
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.Query;
 
 import java.util.List;
 
@@ -13,13 +15,15 @@ public interface PersonDao {
     @Insert
     long[] insertPersons(Person... persons);
 
-    @Update
-    void updatePersons(Person... persons);
+    @Query("update person set name = :name where age = :age")
+    void updatePersons(String name, int age);
 
-    @Delete
-    void deletePersons(Person... persons);
+    @Query("delete from person where name = :name")
+    void deletePersons(String name);
 
     @Query("select * from person")
     List<Person> queryAllPersons();
 
+    @Query("delete from person")
+    void deleteAll();
 }

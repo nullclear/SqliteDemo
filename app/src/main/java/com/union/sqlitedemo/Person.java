@@ -64,7 +64,7 @@ public class Person {
                 + name + '\"'
                 + ",\"age\":"
                 + age
-                + "}}";
+                + "}}\n";
     }
 
     public static final class Builder {
